@@ -1,13 +1,9 @@
 ﻿using Confluent.Kafka;
 using KafkaConsumerService.Configuration;
 using KafkaConsumerService.Factories;
-using KafkaConsumerService.Models;
-using KafkaConsumerService.Serialization;
 using KafkaConsumerService.Strategien;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Serilog;
-using System.Text.Json;
 
 namespace KafkaConsumerService.Services
 {
@@ -40,39 +36,30 @@ namespace KafkaConsumerService.Services
         // Dies ist die Methode, die den Hintergrunddienst startet
         protected override async Task ExecuteAsync(CancellationToken cancellationToken)
         {
-            _consumer.Subscribe(_kafkaConfig.Topic); // Kafka-Topic abonnieren
-
+            _consumer.Subscribe(_kafkaConfig.Topic);
             try
             {
                 while (!cancellationToken.IsCancellationRequested)
                 {
-                    // Warten auf neue Nachrichten
-                    var consumeResult = _consumer.Consume(cancellationToken);
+                    var consumeResult = _consumer.Consume(TimeSpan.FromMilliseconds(200));
 
-                    // Verarbeiten der Nachricht
-                    _logger.LogInformation($"Nachricht empfangen: {consumeResult.Message.Value}");
+                    if (consumeResult != null)
+                    {
+                        _logger.LogInformation($"Nachricht empfangen: {consumeResult.Message.Value}");
+                        await _messageProcessorStrategie.ProcessAsync(consumeResult.Message.Value);
+                    }
 
-                    var message = consumeResult.Message.Value;
-                    // Nachricht verarbeiten
-                    await _messageProcessorStrategie.ProcessAsync(message);
+                    await Task.Delay(100, cancellationToken); // optional: etwas Pause zwischen Polls
                 }
             }
             catch (OperationCanceledException)
             {
-                // Handle cancellation gracefully
                 _logger.LogInformation("Consumer wurde abgebrochen.");
-            }
-            catch (ConsumeException e)
-            {
-                _logger.LogError($"Fehler beim Konsumieren der Nachricht: {e.Error.Reason}");
             }
             finally
             {
                 _consumer.Close();
             }
         }
-
-
-
     }
 }

@@ -25,7 +25,9 @@ namespace KafkaConsumerService.Services
             var config = new ProducerConfig
             {
                 BootstrapServers = _kafkaConfig.BootstrapServers,  // Kafka Broker Adresse
-                MessageTimeoutMs = 5000  // Timeout nach 5 Sekunden
+                MessageTimeoutMs = 5000,  // Timeout nach 5 Sekunden
+                Acks = Acks.All,
+                Debug = "all" // Aktiviert detaillierte Debugging-Logs
             };
 
             _producer = new ProducerBuilder<Null, string>(config).Build();

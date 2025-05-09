@@ -29,7 +29,8 @@ namespace KafkaConsumerService.Utils
             else
             {
                 services.AddDbContext<AppDbContext>(options =>
-                    options.UseSqlServer(configuration.GetConnectionString("ConnectionCrmTest")));
+                    options.UseSqlServer(configuration["ConnectionStrings:ConnectionCrmTest"])); // AOT // ConnectionStrings__ConnectionCrmTest
+                                                                                                 //options.UseSqlServer(configuration.GetConnectionString("ConnectionCrmTest")));
             }
 
             //services.Configure<KafkaConfig>(configuration.GetSection("KafkaConfig")); // stattdessen AOT sicher
@@ -59,6 +60,9 @@ namespace KafkaConsumerService.Utils
             // Optional: Nur im Produktivcode
             services.AddHostedService<KafkaConsumService>();
             services.AddHostedService<KafkaPollingWorker>();
+
+            // Registrierung als Singleton oder Transient fürs TEsten
+            services.AddSingleton<KafkaConsumService>();  // Oder services.AddTransient<KafkaConsumService>();
         }
     }
 }

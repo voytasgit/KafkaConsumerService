@@ -20,8 +20,8 @@ namespace KafkaConsumerService.Factories
         {
             return modelName.ToUpperInvariant() switch
             {
-                "DISTLIST" => JsonSerializer.Deserialize(json, ModelJsonContext.Default.DISTLIST),
-                "AP_KAFKA_QUEUE" => JsonSerializer.Deserialize(json, ModelJsonContext.Default.AP_KAFKA_QUEUE),
+                "DISTLIST" => JsonSerializer.Deserialize<DISTLIST>(json, ModelJsonContext.Default.DISTLIST),
+                "AP_KAFKA_QUEUE" => JsonSerializer.Deserialize<AP_KAFKA_QUEUE>(json, ModelJsonContext.Default.AP_KAFKA_QUEUE),
                 _ => throw new NotSupportedException($"Deserialization for model '{modelName}' is not supported.")
             };
         }

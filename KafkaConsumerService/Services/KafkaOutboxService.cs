@@ -21,6 +21,7 @@ namespace KafkaConsumerService.Services
         {
             return await _dbContext.AP_KAFKA_QUEUE
                 .Where(x => x.ProcessingStatus == Enum.GetName(typeof(AP_KAFKA_QUEUE.ProcStatus), AP_KAFKA_QUEUE.ProcStatus.Pending)) // Beispielstatus "New" = Pending // (ProcStatus)Enum.Parse(typeof(ProcStatus), newStatus)
+                .OrderBy(x=>x.EVENT_TIME)
                 .ToListAsync();
         }
 

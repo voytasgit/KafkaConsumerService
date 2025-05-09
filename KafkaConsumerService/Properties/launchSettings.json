@@ -1,10 +1,16 @@
 {
   "profiles": {
     "KafkaConsumerService": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "environmentVariables": {
+        "ConnectionStrings__ConnectionCrmTest": "Data Source=s37-ADITODEVDB;Initial Catalog=adito_dev;User ID=sa;Password=APsaS37Adm24;Encrypt=Yes;TrustServerCertificate=True;"
+      }
     },
     "Container (Dockerfile)": {
-      "commandName": "Docker"
+      "commandName": "Docker",
+      "environmentVariables": {
+        "ConnectionStrings__ConnectionCrmTest": "Data Source=s37-ADITODEVDB;Initial Catalog=adito_dev;User ID=sa;Password=APsaS37Adm24;Encrypt=Yes;TrustServerCertificate=True;"
+      }
     }
   }
 }

@@ -9,7 +9,6 @@
       "KafkaConsumerService/1.0.0": {
         "dependencies": {
           "Confluent.Kafka": "2.10.0",
-          "Microsoft.DotNet.ILCompiler": "9.0.1",
           "Microsoft.EntityFrameworkCore": "9.0.4",
           "Microsoft.EntityFrameworkCore.Design": "9.0.4",
           "Microsoft.EntityFrameworkCore.InMemory": "9.0.4",
@@ -17,7 +16,6 @@
           "Microsoft.Extensions.DependencyInjection": "9.0.4",
           "Microsoft.Extensions.Hosting": "9.0.4",
           "Microsoft.Extensions.Logging": "9.0.4",
-          "Microsoft.NET.ILLink.Tasks": "9.0.1",
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.21.2",
           "Serilog": "4.2.0",
           "Serilog.Extensions.Hosting": "9.0.0",
@@ -588,7 +586,6 @@
           }
         }
       },
-      "Microsoft.DotNet.ILCompiler/9.0.1": {},
       "Microsoft.EntityFrameworkCore/9.0.4": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Abstractions": "9.0.4",
@@ -1166,7 +1163,6 @@
           }
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.1": {},
       "Microsoft.NETCore.Platforms/1.1.0": {},
       "Microsoft.NETCore.Targets/1.1.0": {},
       "Microsoft.SqlServer.Server/1.0.0": {
@@ -1759,13 +1755,6 @@
       "path": "microsoft.data.sqlclient.sni.runtime/5.1.1",
       "hashPath": "microsoft.data.sqlclient.sni.runtime.5.1.1.nupkg.sha512"
     },
-    "Microsoft.DotNet.ILCompiler/9.0.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-YSn2LXCcOfV6VntSFASNmg1W8ldLPbI74YFx+uke2lYFuahhHfeQIgKS3W52R9phB6YLWT4MvLUPDQqUelplJg==",
-      "path": "microsoft.dotnet.ilcompiler/9.0.1",
-      "hashPath": "microsoft.dotnet.ilcompiler.9.0.1.nupkg.sha512"
-    },
     "Microsoft.EntityFrameworkCore/9.0.4": {
       "type": "package",
       "serviceable": true,
@@ -2080,13 +2069,6 @@
       "sha512": "sha512-RN7lvp7s3Boucg1NaNAbqDbxtlLj5Qeb+4uSS1TeK5FSBVM40P4DKaTKChT43sHyKfh7V0zkrMph6DdHvyA4bg==",
       "path": "microsoft.identitymodel.tokens/6.35.0",
       "hashPath": "microsoft.identitymodel.tokens.6.35.0.nupkg.sha512"
-    },
-    "Microsoft.NET.ILLink.Tasks/9.0.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-BKFAkdhUUJivAoKuSWcT23WH9E+AWQMJootzt9X+lnesOD2a2yNIe1ZQFtxB8H3ayskLBD5gYyIbj5GIfw7rZg==",
-      "path": "microsoft.net.illink.tasks/9.0.1",
-      "hashPath": "microsoft.net.illink.tasks.9.0.1.nupkg.sha512"
     },
     "Microsoft.NETCore.Platforms/1.1.0": {
       "type": "package",

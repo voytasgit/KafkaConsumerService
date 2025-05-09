@@ -1,0 +1,19 @@
+﻿ # Ignore Umgebungsvariablen-Dateien
+.env
+
+# Ignore Docker-Override-Dateien (für lokale Anpassungen)
+docker-compose.override.yml
+
+# Ignore appsettings local files (keine sensiblen Daten im Repo)
+appsettings.Development.json
+
+# VS und IntelliJ spezifische Dateien (sollten nicht im Repo landen)
+.vs/
+.idea/
+.vscode/
+
+# Benutzergeheimnisse in dotnet (sicher lokal gespeichert)
+user-secrets/
+
+# Ignoriere launchSettings.json, da sie lokale Einstellungen enthält
+**/Properties/launchSettings.json

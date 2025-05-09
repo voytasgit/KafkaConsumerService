@@ -19,7 +19,6 @@ namespace KafkaConsumerService.Services
             _kafkaProducerService = kafkaProducerService;
             _kafkaOutboxService = kafkaOutboxService;
         }
-
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             _logger.LogInformation("KafkaPollingWorker gestartet.");
@@ -36,6 +35,11 @@ namespace KafkaConsumerService.Services
                         await _kafkaProducerService.ProduceAsync(entry);
                         await _kafkaOutboxService.UpdateEventStatusAsync(entry.QUEUE_ID, AP_KAFKA_QUEUE.ProcStatus.Sent.ToString());
                     }
+                }
+                catch (OperationCanceledException)
+                {
+                    // Handle cancellation gracefully
+                    _logger.LogInformation("Polling Worker wurde abgebrochen.");
                 }
                 catch (Exception ex)
                 {

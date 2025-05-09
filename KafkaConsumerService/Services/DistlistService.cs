@@ -1,14 +1,8 @@
-﻿using Confluent.Kafka;
-using KafkaConsumerService.Models;
+﻿using KafkaConsumerService.Models;
 using KafkaConsumerService.Repository;
 using KafkaConsumerService.Serialization;
 using Serilog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace KafkaConsumerService.Services
 {
@@ -47,5 +41,4 @@ namespace KafkaConsumerService.Services
             }
         }
     }
-
 }

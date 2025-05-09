@@ -1,0 +1,159 @@
+﻿Docker-Kommandos
+Docker-Container starten:
+
+bash
+Kopieren
+Bearbeiten
+docker-compose up -d
+(Startet die Container im Hintergrund)
+
+Docker-Container stoppen:
+
+bash
+Kopieren
+Bearbeiten
+docker-compose down
+(Stoppt die Container und entfernt sie)
+
+Docker-Container neu starten (nach Änderungen in der docker-compose.yml):
+
+bash
+Kopieren
+Bearbeiten
+docker-compose down && docker-compose up -d
+(Fährt die Container herunter und startet sie neu)
+
+Docker-Container-Protokolle anzeigen:
+
+bash
+Kopieren
+Bearbeiten
+docker logs <container_name>
+Beispiel:
+
+bash
+Kopieren
+Bearbeiten
+docker logs kafka
+Docker-Container betretbar machen (via Bash):
+
+bash
+Kopieren
+Bearbeiten
+docker exec -it <container_name> /bin/bash
+Beispiel:
+
+bash
+Kopieren
+Bearbeiten
+docker exec -it kafka /bin/bash
+Docker-Netzwerk anzeigen:
+
+bash
+Kopieren
+Bearbeiten
+docker network ls
+Container anzeigen:
+
+bash
+Kopieren
+Bearbeiten
+docker ps
+(Zeigt alle laufenden Container an)
+
+Alle Container anzeigen (auch gestoppte):
+
+bash
+Kopieren
+Bearbeiten
+docker ps -a
+Container löschen (wenn gestoppt):
+
+bash
+Kopieren
+Bearbeiten
+docker rm <container_name>
+Image löschen:
+
+bash
+Kopieren
+Bearbeiten
+docker rmi <image_name>
+Kafka-Kommandos (im Docker-Container)
+Liste der Kafka-Themen anzeigen:
+
+bash
+Kopieren
+Bearbeiten
+kafka-topics.sh --bootstrap-server localhost:9092 --list
+Neues Kafka-Topic erstellen:
+
+bash
+Kopieren
+Bearbeiten
+kafka-topics.sh --create --topic <topic_name> --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
+Nachricht an Kafka-Topic senden (Producer):
+
+bash
+Kopieren
+Bearbeiten
+kafka-console-producer.sh --broker-list localhost:9092 --topic <topic_name>
+Nachricht aus Kafka-Topic lesen (Consumer):
+
+bash
+Kopieren
+Bearbeiten
+kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic <topic_name> --from-beginning
+Zookeeper-Kommandos
+Zookeeper-Status anzeigen (falls Zookeeper installiert und verbunden):
+
+bash
+Kopieren
+Bearbeiten
+zkCli.sh -server localhost:2181
+Networking und Firewall
+Firewall-Regel für Kafka-Port öffnen (auf der VM):
+
+bash
+Kopieren
+Bearbeiten
+sudo ufw allow 9092
+sudo ufw reload
+Docker-Container-Netzwerk-IP (für VM-Verbindungen) überprüfen:
+
+bash
+Kopieren
+Bearbeiten
+ip a
+Sonstige nützliche Docker-Kommandos
+Docker-Image-Liste anzeigen:
+
+bash
+Kopieren
+Bearbeiten
+docker images
+Docker-Container interaktiv starten (z. B. mit bash):
+
+bash
+Kopieren
+Bearbeiten
+docker run -it --rm <image_name> /bin/bash
+Docker-Container stoppen:
+
+bash
+Kopieren
+Bearbeiten
+docker stop <container_name>
+Kaffee-Produzenten (Kafka Producer) und Konsumenten (Kafka Consumer)
+Producer (sendet Nachrichten an ein Topic):
+
+bash
+Kopieren
+Bearbeiten
+kafka-console-producer.sh --broker-list <broker_ip>:9092 --topic <topic_name>
+Consumer (liest Nachrichten von einem Topic):
+
+bash
+Kopieren
+Bearbeiten
+kafka-console-consumer.sh --bootstrap-server <broker_ip>:9092 --topic <topic_name> --from-beginning
