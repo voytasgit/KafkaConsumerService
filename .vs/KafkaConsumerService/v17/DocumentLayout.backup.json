@@ -1,0 +1,78 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\[SOURCE]\\apano\\KafkaConsumerService\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3B2CE6AE-529A-468D-9048-795D66A7674F}|KafkaConsumerServiceTests\\KafkaConsumerServiceTests.csproj|c:\\[source]\\apano\\kafkaconsumerservice\\kafkaconsumerservicetests\\services\\kafkaproducerservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B2CE6AE-529A-468D-9048-795D66A7674F}|KafkaConsumerServiceTests\\KafkaConsumerServiceTests.csproj|solutionrelative:kafkaconsumerservicetests\\services\\kafkaproducerservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B2CE6AE-529A-468D-9048-795D66A7674F}|KafkaConsumerServiceTests\\KafkaConsumerServiceTests.csproj|c:\\[source]\\apano\\kafkaconsumerservice\\kafkaconsumerservicetests\\strategien\\messageprocessorstrategietests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B2CE6AE-529A-468D-9048-795D66A7674F}|KafkaConsumerServiceTests\\KafkaConsumerServiceTests.csproj|solutionrelative:kafkaconsumerservicetests\\strategien\\messageprocessorstrategietests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:11:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:12:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:13:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{99b8fa2f-ab90-4f57-9c32-949f146f1914}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MessageProcessorStrategieTests.cs",
+              "DocumentMoniker": "C:\\[SOURCE]\\apano\\KafkaConsumerService\\KafkaConsumerServiceTests\\Strategien\\MessageProcessorStrategieTests.cs",
+              "RelativeDocumentMoniker": "KafkaConsumerServiceTests\\Strategien\\MessageProcessorStrategieTests.cs",
+              "ToolTip": "C:\\[SOURCE]\\apano\\KafkaConsumerService\\KafkaConsumerServiceTests\\Strategien\\MessageProcessorStrategieTests.cs",
+              "RelativeToolTip": "KafkaConsumerServiceTests\\Strategien\\MessageProcessorStrategieTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAIAwAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T16:05:27.086Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "KafkaProducerServiceTests.cs",
+              "DocumentMoniker": "C:\\[SOURCE]\\apano\\KafkaConsumerService\\KafkaConsumerServiceTests\\Services\\KafkaProducerServiceTests.cs",
+              "RelativeDocumentMoniker": "KafkaConsumerServiceTests\\Services\\KafkaProducerServiceTests.cs",
+              "ToolTip": "C:\\[SOURCE]\\apano\\KafkaConsumerService\\KafkaConsumerServiceTests\\Services\\KafkaProducerServiceTests.cs*",
+              "RelativeToolTip": "KafkaConsumerServiceTests\\Services\\KafkaProducerServiceTests.cs*",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAvwC8AAAAIAwAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T16:05:11.059Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
