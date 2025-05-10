@@ -1,0 +1,67 @@
+﻿ 1. Clone Repository (once at the beginning)
+bash
+Kopieren
+Bearbeiten
+git clone https://github.com/your-username/your-repo-name.git
+# Clones the repository to your local machine
+🔄 2. Check Status / Changes
+bash
+Kopieren
+Bearbeiten
+git status
+# Shows current changes, staged/untracked files, and branch info
+✏️ 3. Stage All Changes for Commit
+bash
+Kopieren
+Bearbeiten
+git add .
+# Adds all modified and new files to the staging area
+
+# OR safer alternative:
+git add -u
+# Adds only modified and deleted tracked files (ignores untracked files like .vs/)
+⚠️ You had permission errors with .vs/ – caused by locked files not excluded properly.
+
+❌ 4. Fix .vs issue – Stop tracking it
+bash
+Kopieren
+Bearbeiten
+# First, make sure .gitignore excludes it:
+echo ".vs/" >> .gitignore
+
+# Remove cached files already tracked before adding to .gitignore
+git rm -r --cached .vs
+# Removes the folder from Git tracking but keeps it locally
+✅ 5. Commit Changes
+bash
+Kopieren
+Bearbeiten
+git commit -m "Add summary comments and clean project structure"
+# Saves the staged changes locally with a message
+⬆️ 6. Push to Remote Repository (GitHub)
+bash
+Kopieren
+Bearbeiten
+git push origin main
+# Pushes your commits to the 'main' branch on GitHub
+⬇️ 7. Pull Latest Changes from GitHub
+bash
+Kopieren
+Bearbeiten
+git pull origin main
+# Updates your local branch with the latest from GitHub
+🧹 8. Clean Cache / Reset If Needed
+bash
+Kopieren
+Bearbeiten
+git rm -r --cached .vs
+# Stops tracking the .vs folder
+
+git clean -fd
+# (Optional) Removes untracked files and folders
+📌 Optional: View Commit History
+bash
+Kopieren
+Bearbeiten
+git log --oneline
+# Shows a short summary of commits
