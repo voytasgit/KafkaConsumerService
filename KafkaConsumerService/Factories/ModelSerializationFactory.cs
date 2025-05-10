@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace KafkaConsumerService.Factories
 {
+    // Factory class for deserializing models based on their name
     public interface IModelSerializationFactory
     {
         object? DeserializeByModelName(string modelName, string json);

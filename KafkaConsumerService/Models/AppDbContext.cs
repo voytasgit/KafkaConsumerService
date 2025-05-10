@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
 namespace KafkaConsumerService.Models;
-
+// Represents the application's database context, managing access to Kafka queue and DISTLIST entities.
 public partial class AppDbContext : DbContext
 {
     public AppDbContext(DbContextOptions<AppDbContext> options)

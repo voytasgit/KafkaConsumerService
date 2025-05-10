@@ -4,6 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace KafkaConsumerService.Serialization
 {
+    // Provides JSON serialization context for specific models (DISTLIST and AP_KAFKA_QUEUE).
     [JsonSerializable(typeof(DISTLIST))]
     [JsonSerializable(typeof(AP_KAFKA_QUEUE))]
     public partial class ModelJsonContext : JsonSerializerContext

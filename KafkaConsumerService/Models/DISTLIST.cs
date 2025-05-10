@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace KafkaConsumerService.Models;
-
+// Represents the DISTLIST model, which contains details about a distribution list.
 public partial class DISTLIST
 {
     public string DISTLISTID { get; set; } = null!;

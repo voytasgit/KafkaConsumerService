@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace KafkaConsumerService.Factories
 {
+    // Factory class for providing services based on model name
     public interface IModelServiceFactory
     {
         IDistlistService GetService(string modelName);

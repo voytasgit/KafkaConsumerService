@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace KafkaConsumerService.Models;
-
+// Represents the AP_KAFKA_QUEUE model with various properties related to Kafka queue events.
 public partial class AP_KAFKA_QUEUE
 {
     public string QUEUE_ID { get; set; }

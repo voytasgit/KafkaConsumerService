@@ -10,30 +10,31 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 
-
 namespace KafkaConsumerService.Utils
 {
+    // Static class to register services with Dependency Injection container
     public static class ServiceRegistrator
     {
-
+        // Method to register services required for the Kafka Consumer Service
         public static void RegisterServices(IServiceCollection services, IConfiguration configuration)
         {
-            // appsettings.json lesen
-            var useInMemory = string.Equals(configuration["UseInMemoryDb"] ?? "false", "true", StringComparison.OrdinalIgnoreCase); // = configuration.GetValue<bool>("UseInMemoryDb");  // stattdessen AOT sicher
-            // alle Tests bekommen InMemory DB
+            // Read appsettings.json to determine if in-memory DB should be used
+            var useInMemory = string.Equals(configuration["UseInMemoryDb"] ?? "false", "true", StringComparison.OrdinalIgnoreCase);
+
+            // If in-memory DB is to be used (e.g., for testing), set it up
             if (useInMemory)
             {
                 services.AddDbContext<AppDbContext>(options =>
-                    options.UseInMemoryDatabase("TestDb"));
+                    options.UseInMemoryDatabase("TestDb")); // Use in-memory database for tests
             }
             else
             {
+                // If not using in-memory DB, configure SQL Server connection string
                 services.AddDbContext<AppDbContext>(options =>
-                    options.UseSqlServer(configuration["ConnectionStrings:ConnectionCrmTest"])); // AOT // ConnectionStrings__ConnectionCrmTest
-                                                                                                 //options.UseSqlServer(configuration.GetConnectionString("ConnectionCrmTest")));
+                    options.UseSqlServer(configuration["ConnectionStrings:ConnectionCrmTest"])); // Use SQL Server for production
             }
 
-            //services.Configure<KafkaConfig>(configuration.GetSection("KafkaConfig")); // stattdessen AOT sicher
+            // Load Kafka configuration section from appsettings.json and register it as a singleton
             var section = configuration.GetRequiredSection("KafkaConfig");
             var kafkaConfig = new KafkaConfig
             {
@@ -44,26 +45,29 @@ namespace KafkaConsumerService.Utils
             };
             services.AddSingleton(kafkaConfig);
 
+            // Add Serilog logging to the service container
             services.AddLogging(builder => builder.AddSerilog());
 
-            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-            services.AddScoped<IDistlistService, DistlistService>();
-            services.AddScoped<IModelServiceFactory, ModelServiceFactory>();
+            // Register repository and services for Dependency Injection
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>)); // Generic repository registration
+            services.AddScoped<IDistlistService, DistlistService>(); // Distlist service
+            services.AddScoped<IModelServiceFactory, ModelServiceFactory>(); // Model service factory
 
+            // Register Kafka producer and outbox service as transient services
             services.AddTransient<IKafkaProducerService, KafkaProducerService>();
             services.AddTransient<IKafkaOutboxService, KafkaOutboxService>();
 
+            // Register message processing strategy and serialization factory as singletons
             services.AddSingleton<IMessageProcessorStrategie, MessageProcessorStrategie>();
             services.AddSingleton<IModelSerializationFactory, ModelSerializationFactory>();
             services.AddSingleton<ModelJsonContext>(ModelJsonContext.Default);
 
-            // Optional: Nur im Produktivcode
-            services.AddHostedService<KafkaConsumService>();
-            services.AddHostedService<KafkaPollingWorker>();
+            // Register hosted services for Kafka consumer and polling workers
+            services.AddHostedService<KafkaConsumService>(); // Kafka consumer background service
+            services.AddHostedService<KafkaPollingWorker>(); // Polling worker background service
 
-            // Registrierung als Singleton oder Transient fürs TEsten
-            services.AddSingleton<KafkaConsumService>();  // Oder services.AddTransient<KafkaConsumService>();
+            // Optional: Register KafkaConsumerService as Singleton or Transient for testing
+            services.AddSingleton<KafkaConsumService>();  // Or services.AddTransient<KafkaConsumService>();
         }
     }
 }
-

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace KafkaConsumerService.Repository
 {
+    // Generic repository for CRUD operations on any entity type.
     public interface IGenericRepository<T> where T : class
     {
         Task<T> CreateAsync(T entity);
