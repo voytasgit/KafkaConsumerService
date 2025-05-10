@@ -42,6 +42,10 @@
   <ItemGroup>
     <Using Include="System.Text.Json.Serialization" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="logs\" />
+  </ItemGroup>
    
 
 </Project>
