@@ -33,14 +33,18 @@ echo ".vs/" >> .gitignore
 
 # Remove cached files already tracked before adding to .gitignore
 git rm -r --cached .vs
+
 # Removes the folder from Git tracking but keeps it locally
 ✅ 5. Commit Changes
+
 bash
 Kopieren
 Bearbeiten
 git commit -m "Add summary comments and clean project structure"
+
 # Saves the staged changes locally with a message
 ⬆️ 6. Push to Remote Repository (GitHub)
+
 bash
 Kopieren
 Bearbeiten
