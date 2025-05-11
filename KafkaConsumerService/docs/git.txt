@@ -4,12 +4,14 @@ Kopieren
 Bearbeiten
 git clone https://github.com/your-username/your-repo-name.git
 # Clones the repository to your local machine
+
 🔄 2. Check Status / Changes
 bash
 Kopieren
 Bearbeiten
 git status
 # Shows current changes, staged/untracked files, and branch info
+
 ✏️ 3. Stage All Changes for Commit
 bash
 Kopieren
