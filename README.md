@@ -15,6 +15,8 @@ The project includes:
 
 Use Case:
 
-Ideal for .NET & Kafka-based event-driven systems
+Ideal for .NET & Kafka-based event-driven systems. 
+Especially useful when migrating from legacy databases, allowing the current (live) database to be mirrored into a test or development environment by transforming CRUD transactions into events. 
+This is demonstrated using the example of the DISTLIST table.
 
 Supports AOT-friendly JSON (via System.Text.Json source generators)
