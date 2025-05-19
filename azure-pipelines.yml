@@ -1,36 +1,56 @@
 trigger:
 - main
 
-# Verwende deinen eigenen Agent (nicht Hosted)
 pool:
-  name: Default  # oder der Name deines eigenen Agentpools
-  demands:
-  - msbuild
-  - visualstudio
+  name: Default  # Dein Self-hosted Agent Pool mit Zugriff auf C:\apano_Dienste
 
 variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  projectName: 'KafkaConsumerService'  # <- dein Projektordner
-  targetPath: 'C:\apano_Dienste\$(projectName)'
+  projectName: 'KafkaConsumerService'
+  targetPath: 'C:\apano_Dienste\KafkaConsumerService'
 
 steps:
-- task: UseDotNet@2
+
+# NuGet wiederherstellen
+- task: NuGetToolInstaller@1
+
+- task: NuGetCommand@2
   inputs:
-    packageType: 'sdk'
-    version: '9.0.x'  # oder 6.0.x je nach Projekt
+    restoreSolution: '$(solution)'
 
-- script: dotnet restore
-  displayName: 'Restore packages'
+# Projekt kompilieren
+- task: VSBuild@1
+  inputs:
+    solution: '$(solution)'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
 
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'Build solution'
-
+# Projekt veröffentlichen
 - script: dotnet publish -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory)
   displayName: 'Publish project'
 
+# Zielordner erstellen (falls nicht vorhanden)
+- powershell: |
+    if (-Not (Test-Path -Path "$(targetPath)")) {
+        New-Item -ItemType Directory -Path "$(targetPath)" | Out-Null
+        Write-Host "Zielverzeichnis erstellt: $(targetPath)"
+    } else {
+        Write-Host "Zielverzeichnis vorhanden: $(targetPath)"
+    }
+  displayName: 'Ensure target directory exists'
+
+# Dateien ins Zielverzeichnis kopieren
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(Build.ArtifactStagingDirectory)'
     Contents: '**'
     TargetFolder: '$(targetPath)'
-  displayName: 'Copy files to target path'
+  displayName: 'Copy published EXE to deployment folder'
+
+# Inhalt auflisten zur Kontrolle (optional)
+- powershell: |
+    Write-Host "Inhalt von $(targetPath):"
+    Get-ChildItem -Path "$(targetPath)" -Recurse
+  displayName: 'List deployed files'
