@@ -42,6 +42,10 @@
   <ItemGroup>
     <Using Include="System.Text.Json.Serialization" />
   </ItemGroup>
+  
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="if &quot;$(ConfigurationName)&quot;==&quot;Release&quot; (&#xD;&#xA;   xcopy /y /s /i &quot;$(TargetDir)*&quot; &quot;\\S68-APP\c$\apano_Dienste\$(ProjectName)\&quot;&#xD;&#xA;)" />
+  </Target>
    
 
 </Project>
