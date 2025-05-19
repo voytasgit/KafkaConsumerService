@@ -1,0 +1,36 @@
+trigger:
+- main
+
+# Verwende deinen eigenen Agent (nicht Hosted)
+pool:
+  name: Default  # oder der Name deines eigenen Agentpools
+  demands:
+  - msbuild
+  - visualstudio
+
+variables:
+  buildConfiguration: 'Release'
+  projectName: 'KafkaConsumerService'  # <- dein Projektordner
+  targetPath: 'C:\apano_Dienste\$(projectName)'
+
+steps:
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '9.0.x'  # oder 6.0.x je nach Projekt
+
+- script: dotnet restore
+  displayName: 'Restore packages'
+
+- script: dotnet build --configuration $(buildConfiguration)
+  displayName: 'Build solution'
+
+- script: dotnet publish -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory)
+  displayName: 'Publish project'
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(Build.ArtifactStagingDirectory)'
+    Contents: '**'
+    TargetFolder: '$(targetPath)'
+  displayName: 'Copy files to target path'
