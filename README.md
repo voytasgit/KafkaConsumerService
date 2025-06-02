@@ -1,4 +1,10 @@
-﻿# KafkaConsumerService
+## Legal Notice
+
+This project includes a Kafka consumer implementation intended to work with Apache Kafka.
+It is an **unofficial** tool and is **not affiliated with, endorsed by, or supported by the Apache Software Foundation**.
+"Apache", "Kafka", and related marks are trademarks of the Apache Software Foundation.
+
+# KafkaConsumerService
 KafkaConsumerService is a .NET 9 microservice that acts as a Kafka consumer. It listens to a Kafka topic, processes messages asynchronously via a decoupled message handler architecture, and persists or acts on the data using a generic repository.
 
 The project includes:
