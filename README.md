@@ -26,3 +26,8 @@ Especially useful when migrating from legacy databases, allowing the current (li
 This is demonstrated using the example of the DISTLIST table.
 
 Supports AOT-friendly JSON (via System.Text.Json source generators)
+
+## Disclaimer
+
+This software is provided "as is", without warranty of any kind.  
+Use it at your own risk. The maintainers and contributors are not responsible for any damage or data loss resulting from its use.
